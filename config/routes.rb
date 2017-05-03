@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  get '/products' => 'products#all_products'
-  get '/product' => 'products#one_product'
+  get '/product_all' => 'products#all_products'
+  get '/product_one' => 'products#one_product'
 end

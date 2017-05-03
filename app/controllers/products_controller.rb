@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
   def all_products
 
-    render computers.html.erb
+    render beanie_babies.html.erb
 end

@@ -1,11 +1,13 @@
 class ProductsController < ApplicationController
+  
   def all_products
-    @product = Product.all
-    render all_products.html.erb
+    @products = Product.all
+    render 'all_products.html.erb'
   end
-  def one_product
-    @product = Product.last
-        render one_product.html.erb
 
+  def one_product
+    @product = Product.first
+        render 'one_product.html.erb'
   end
+
 end

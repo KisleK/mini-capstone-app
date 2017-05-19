@@ -1,0 +1,22 @@
+$primary-color: orange;
+
+h1{
+ background-color: $primary-color;
+}
+
+h2{
+ color: $primary-color;
+}
+
+ h2 a:hover{
+   color: $primary-color;
+ }
+
+ h2 span {
+   background-color: #000;
+}
+
+body {
+  font-family: "Book Antiqua",Palatino,"Palatino Linotype","Palatino LT STD",Georgia,serif;
+  background-image: url('kindajean.png')
+}

@@ -1,0 +1,41 @@
+
+<h2> <%= @product.name %></h2>
+<h5> Last Updated On: <%= @product.friendly_updated_at %></h5>
+<h4> <%= @product.sale_message %></h4>
+<p class=" <%= "red-price" if @product.discounted? %>">Price: <%= number_to_currency(@product.price) %></p>
+<h2> Tax : <%= number_to_currency(@product.tax) %></h2>
+<h2> Total : <%= number_to_currency(@product.total) %></h2>
+<h2> Description <%= @product.description %></h2>
+
+
+
+
+  <a href="/products/<%= @product.id %>/edit">Edit Product</a>
+
+  <%= link_to "Delete", "/products/#{ @product.id }", method: :delete %>
+
+
+
+<%= form_tag "/orders", method: :post do %>
+
+
+    <div>
+    Quantity: <input type="text" name="quantity">
+  </div>
+   <div>
+     Product Id: <input type="text" name="product_id">
+   </div>
+  <input type="submit" value="Buy Now">
+
+  <% end %>
+<h5><%= @product.supplier.name %></h5>
+
+
+
+
+
+
+
+
+
+

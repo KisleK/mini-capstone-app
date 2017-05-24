@@ -3,6 +3,18 @@ class Product < ApplicationRecord
   belongs_to :supplier
   has_many :images
   has_many :orders
+  has_many :category_products
+  has_many :categories, through: :category_products
+  has_many :carted_products
+  has_many :users, through: :carted_products
+  has_many :orders, through: :carted_products
+
+
+
+
+
+
+
   
   def friendly_updated_at
         updated_at.strftime("%b %d, %Y") 
@@ -29,4 +41,12 @@ class Product < ApplicationRecord
   def total
     price + tax
   end
+
+  def stringify_categories
+    categories.map { |category| category.name.titleize }.join(", ")
+  end
+
+
+
+
 end

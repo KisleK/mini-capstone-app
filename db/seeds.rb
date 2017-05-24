@@ -37,3 +37,26 @@
 #               {url: "https://images-na.ssl-images-amazon.com/images/I/41jXAfoSaDL._SX355_.jpg", product_id: 6},
 #               {url: "https://www.coololdstuffforsale.com/photos/BeanieLegsFrog.jpg", product_id: 7}
 #   ])
+
+
+#1 expensive
+#2 fluffy
+#3 animal
+
+CategoryProduct.create!([
+                        {category_id: 1, product_id: 2},
+                        {category_id: 1, product_id: 4},
+                        {category_id: 1, product_id: 6},
+                        {category_id: 2, product_id: 1},
+                        {category_id: 2, product_id: 3},
+                        {category_id: 2, product_id: 5},
+                        {category_id: 3, product_id: 8},
+                        {category_id: 3, product_id: 7},
+                        {category_id: 3, product_id: 6},
+                        {category_id: 3, product_id: 5},
+                        {category_id: 3, product_id: 4},
+                        {category_id: 3, product_id: 3},
+                        {category_id: 3, product_id: 2},
+                        {category_id: 3, product_id: 1}
+                        ])
+

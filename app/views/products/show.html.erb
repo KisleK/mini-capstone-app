@@ -5,10 +5,8 @@
 <p class=" <%= "red-price" if @product.discounted? %>">Price: <%= number_to_currency(@product.price) %></p>
 <h2> Tax : <%= number_to_currency(@product.tax) %></h2>
 <h2> Total : <%= number_to_currency(@product.total) %></h2>
-<h2> Description <%= @product.description %></h2>
-
-
-
+<h2> Description: <%= @product.description %></h2>
+<h2> Categories: <%= @product.stringify_categories %></h2>
 
   <a href="/products/<%= @product.id %>/edit">Edit Product</a>
 
@@ -16,20 +14,23 @@
 
 
 
-<%= form_tag "/orders", method: :post do %>
 
 
-    <div>
+
+
+<%= form_tag "/checkout", method: :post do %>
+
+  <div>
     Quantity: <input type="text" name="quantity">
-  </div>
-   <div>
-     Product Id: <input type="text" name="product_id">
    </div>
-  <input type="submit" value="Buy Now">
+   
+  <input type="hidden" name="product_id" value="<%= @product.id %>">
+  <input type="submit" value="Add to Cart" class="btn btn-primary">
 
   <% end %>
-<h5><%= @product.supplier.name %></h5>
 
+
+<h5><%= @product.supplier.name %></h5>
 
 
 

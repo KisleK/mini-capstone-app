@@ -1,0 +1,12 @@
+
+<h1>Carted Products</h1>
+
+<% @cart.each do |item| %>
+  <h3><%= item.product.name %> x <%= item.quantity %> = <%= number_to_currency(item.product.price) %> = subtotal </h3>
+
+<% end %>
+
+<%= form_tag "/orders" method: :post do %>
+  <input type="submit" value="Buy Now" class="btn btn-primary">
+
+<% end %>

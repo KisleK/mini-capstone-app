@@ -7,6 +7,11 @@ class ProductsController < ApplicationController
     sort_order = params[:sort_order]
     discount = params[:discount]
     search_term = params[:search_term]
+    category = params[:category]
+
+    if category
+      @products = Category.find_by(name: category).products
+    end
 
       if search_term
         @products = Product.where(
@@ -15,6 +20,8 @@ class ProductsController < ApplicationController
                                   "%#{search_term}%"
                                   )
       end
+
+      
 
       if discount 
         @products = @products.where("price < ?", discount)

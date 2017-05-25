@@ -1,12 +1,19 @@
 
-<h1>Carted Products</h1>
+<h1>Checkout</h1>
 
-<% @cart.each do |item| %>
-  <h3><%= item.product.name %> x <%= item.quantity %> = <%= number_to_currency(item.product.price) %> = subtotal </h3>
+<% @carted_products.each do |carted_product| %>
+  <h3><%= carted_product.product.name %> x <%= carted_product.quantity %> = <%= number_to_currency(carted_product.product.price) %> = subtotal 
+  
 
+  <%= link_to "/checkout/#{carted_product.id}", method: :delete do %>
+  
+
+    <input type="submit" value="Delete" class="btn btn-danger">
+    </h3>
+  <% end %>
 <% end %>
 
-<%= form_tag "/orders" method: :post do %>
+<%= form_tag "/orders", method: :post do %>
   <input type="submit" value="Buy Now" class="btn btn-primary">
-
 <% end %>
+

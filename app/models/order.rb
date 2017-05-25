@@ -3,16 +3,15 @@ class Order < ApplicationRecord
   belongs_to :user
 
   has_many :carted_products
-  has_many :users, through: :carted_products
   has_many :products, through: :carted_products
 
-  def calculate_subtotal(cart)
+
+  def calculate_subtotal(list)
     subtotal = 0
-    cart.each do |item|
-       subtotal = item.product.price * item.quantity
-    end
-    self.subtotal = product.price * quantity
-     subtotal = item.product.price * item.quantity
+    # list.each do |item|
+    #    subtotal += item.product.price * item.quantity
+    # end
+     self.subtotal = subtotal
   end
 
   def calculate_tax

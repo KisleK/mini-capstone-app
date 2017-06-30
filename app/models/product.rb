@@ -12,8 +12,12 @@ class Product < ApplicationRecord
   has_many :category_products
 
 
-
-
+  validates :name, presence: true
+  validates :name, uniqueness: true
+  validates :price, presence: true
+  validates :price, numericality: true
+  validates :description, presence: true
+  validates :description, length: { maximum: 500 }
 
   
   def friendly_updated_at

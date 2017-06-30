@@ -8,14 +8,10 @@
 <h2> Description: <%= @product.description %></h2>
 <h2> Categories: <%= @product.stringify_categories %></h2>
 
+<% if admin_signed_in? %>
   <a href="/products/<%= @product.id %>/edit">Edit Product</a>
-
   <%= link_to "Delete", "/products/#{ @product.id }", method: :delete %>
-
-
-
-
-
+<% end %>
 
 
 <%= form_tag "/carted_products", method: :post do %>

@@ -1,8 +1,8 @@
 
 <h1>Checkout</h1>
 
-<% @carted_products.each do |carted_product| %>
-  <h3><%= carted_product.product.name %> x <%= carted_product.quantity %> = <%= number_to_currency(carted_product.product.price) %> = subtotal 
+<% @carted_product.each do |carted_product| %>
+  <h3><%= carted_product.product.name %> x <%= carted_product.quantity %> at <%= number_to_currency(carted_product.product.price) %>  
   
 
   <%= link_to "/checkout/#{carted_product.id}", method: :delete do %>

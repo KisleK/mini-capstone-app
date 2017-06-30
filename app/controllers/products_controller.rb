@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  
+  before_action :authenticate_admin!, except: [:index, :show, :random]
   def index
     @products = Product.all  
 
@@ -36,19 +36,25 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
     
   end
 
   def create 
-    product = Product.new(
+  
+    @product = Product.new(
                           name: params[:name],
                           price: params[:price],
                           description: params[:description]
                           )
-    product.save
+    if @product.save
+      flash[:success] = "Product Made"
+      redirect_to "/products/#{ product.id }"
+    else 
+  
+      render "new.html.erb"
+    end
 
-    flash[:success] = "Product Made"
-    redirect_to "/products/#{ product.id }"
       
   end
 
@@ -58,11 +64,14 @@ class ProductsController < ApplicationController
   end
 
   def edit
+   
     @product = Product.find(params[:id])
   end
 
 
   def update
+    
+    
     product = Product.find(params[:id])
     product.assign_attributes(
                              name: params[:name],
@@ -70,13 +79,19 @@ class ProductsController < ApplicationController
                              description: params[:description]
                              
                              )
-      product.save
-      flash[:success] = "Successfully Updated"
-      redirect_to "/products/#{ product.id }"
+      if product.save
+        flash[:success] = "Successfully Updated"
+        redirect_to "/products/#{ product.id }"
+      else
+        render "edit.html.erb"
+
+      end
   end
 
 
   def destroy
+    
+    
     product = Product.find(params[:id])
     product.destroy   
     flash[:warning] = "Product No-Mo"

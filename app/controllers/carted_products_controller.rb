@@ -20,7 +20,7 @@ class CartedProductsController < ApplicationController
 
    
 
-     carted_products.save
+     carted_product.save
      flash[:success] = "Item added to cart!"
     redirect_to "/carted_products"
     
